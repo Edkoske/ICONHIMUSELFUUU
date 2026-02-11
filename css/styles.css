@@ -629,6 +629,131 @@ body.dark-mode .about-image-placeholder {
     display: block;
 }
 
+/* About Section Card Styling (Portfolio-like) */
+.about-intro {
+    max-width: 900px;
+    margin: 0 auto var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+    text-align: center;
+}
+
+.about-intro p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-relaxed);
+}
+
+body.dark-mode .about-intro p {
+    color: var(--dark-text-muted);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.about-card {
+    background: var(--neutral-lightest);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-smooth);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-mode .about-card {
+    background: var(--dark-card);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.about-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(0, 188, 212, 0.2);
+}
+
+.about-card-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    min-height: 140px;
+}
+
+.about-card-header i {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+.about-card-header h4 {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: var(--font-secondary);
+    margin: 0;
+    line-height: var(--line-height-tight);
+}
+
+.about-card-content {
+    padding: var(--spacing-lg);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-card-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: var(--line-height-relaxed);
+    margin-bottom: 0.5rem;
+}
+
+.about-card-content > p:last-of-type:not(.about-card-desc) {
+    margin-bottom: var(--spacing-md);
+}
+
+.about-card-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem !important;
+    margin-bottom: 0 !important;
+}
+
+body.dark-mode .about-card-content p {
+    color: var(--dark-text-muted);
+}
+
+body.dark-mode .about-card-content strong {
+    color: var(--dark-text);
+}
+
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+}
+
+.about-tags span {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-color), var(--light-accent));
+    color: white;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+
+
 .about-image-placeholder i {
     font-size: 8rem;
     color: var(--accent-color);
@@ -1304,11 +1429,16 @@ body.dark-mode .footer {
         padding: 2rem;
     }
     
-    .about-text h3 {
-        font-size: 2rem;
+    .about-card-header {
+        padding: 2rem;
+        min-height: 160px;
     }
     
-    .about-text h4 {
+    .about-card-header i {
+        font-size: 3rem;
+    }
+    
+    .about-card-header h4 {
         font-size: 1.5rem;
     }
     
@@ -1491,12 +1621,12 @@ body.dark-mode .footer {
         font-size: 2rem;
     }
     
-    .about-text h3 {
-        font-size: 1.6rem;
+    .about-card-header h4 {
+        font-size: 1.3rem;
     }
     
-    .about-text h4 {
-        font-size: 1.2rem;
+    .about-card-header i {
+        font-size: 2.5rem;
     }
     
     .portfolio-grid,
@@ -1669,13 +1799,16 @@ body.dark-mode .footer {
         font-size: 1rem;
     }
     
-    .about-text h3 {
-        font-size: 1.4rem;
+    .about-card-header h4 {
+        font-size: 1.1rem;
     }
     
-    .about-text h4 {
-        font-size: 1.1rem;
-        margin-top: 1.5rem;
+    .about-card-header i {
+        font-size: 2rem;
+    }
+    
+    .about-card-header {
+        min-height: 120px;
     }
     
     .education-list li {
@@ -1887,15 +2020,18 @@ body.dark-mode .footer {
         margin-bottom: 1.5rem;
     }
     
-    .about-text h3 {
-        font-size: 1.25rem;
-        margin-bottom: 1rem;
+    .about-card-header h4 {
+        font-size: 1rem;
     }
     
-    .about-text h4 {
-        font-size: 1rem;
-        margin-top: 1.25rem;
-        margin-bottom: 0.75rem;
+    .about-card-header i {
+        font-size: 1.75rem;
+    }
+    
+    .about-card-header {
+        padding: 1.25rem;
+        min-height: 110px;
+        gap: 1rem;
     }
     
     .about-text p {
