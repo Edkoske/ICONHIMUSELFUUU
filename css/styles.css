@@ -655,6 +655,30 @@ body.dark-mode .about-intro p {
     color: var(--dark-text-muted);
 }
 
+/* Political affiliation note */
+.political-note {
+    margin-top: var(--spacing-md);
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+body.dark-mode .political-note {
+    color: var(--light-accent);
+}
+
+/* Footer political disclaimer */
+.political-disclaimer {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    opacity: 0.9;
+}
+
+body.dark-mode .political-disclaimer {
+    color: var(--dark-text-muted);
+}
+
 .about-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
