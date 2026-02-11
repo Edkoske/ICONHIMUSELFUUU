@@ -165,33 +165,41 @@ if (contactForm) {
             return;
         }
 
-        // Here you would typically send the data to a backend service
-        // For this demo, we'll simulate the submission
+        // Build email body
+        const ownerEmail = 'kimutaikelvin800@gmail.com';
+        const bodyLines = [];
+        bodyLines.push(`Name: ${name}`);
+        bodyLines.push(`Sender Email: ${email}`);
+        bodyLines.push('');
+        bodyLines.push(message);
+        bodyLines.push('');
+        bodyLines.push(`--\nSent from ICONHIMUSELFUUU website`);
+        const body = bodyLines.join('\n');
+
+        const subjectEncoded = encodeURIComponent(subject);
+        const bodyEncoded = encodeURIComponent(body);
+
+        // Decide which URL to open: Gmail compose (web) for desktop, mailto for mobile
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
         try {
-            // Simulate form submission (replace with actual API call)
-            console.log({
-                name,
-                email,
-                subject,
-                message,
-                timestamp: new Date().toISOString()
-            });
+            if (isMobile) {
+                // Use mailto: which will open the user's default mail app (Gmail app on many devices)
+                const mailto = `mailto:${ownerEmail}?subject=${subjectEncoded}&body=${bodyEncoded}`;
+                window.location.href = mailto;
+            } else {
+                // Open Gmail web compose in a new tab/window
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(ownerEmail)}&su=${subjectEncoded}&body=${bodyEncoded}`;
+                window.open(gmailUrl, '_blank');
+            }
 
-            // Show success message
-            showFormResponse(
-                'Thank you! Your message has been sent successfully. I\'ll get back to you soon!',
-                'success'
-            );
+            // Provide short feedback
+            showFormResponse('Opening your email client to compose the message...', 'success');
 
-            // Reset form
-            contactForm.reset();
-
-            // Log to console for demo purposes
-            console.log('Message to send:', { name, email, subject, message });
-
-        } catch (error) {
-            showFormResponse('An error occurred. Please try again later.', 'error');
-            console.error('Error:', error);
+            // Do not reset the form immediately — let user confirm/send in their email app
+        } catch (err) {
+            console.error('Failed to open email client:', err);
+            showFormResponse('Unable to open your email client. Please copy your message and email directly to ' + ownerEmail, 'error');
         }
     });
 }
