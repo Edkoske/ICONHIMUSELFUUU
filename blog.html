@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ICONHIMUSELFUUU Blog - Strategic insights on enterprise IT, digital transformation, program management, and industry innovation.">
+    <meta name="author" content="ICONHIMUSELFUUU">
+    <title>Blog | ICONHIMUSELFUUU</title>    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
+    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap\" rel=\"stylesheet\">    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Blog-specific styles */
+        .blog-hero {
+            background: linear-gradient(135deg, #1a3a52, #0f5a7a);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .blog-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-filter {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #00bcd4;
+            background: white;
+            color: #1a3a52;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        body.dark-mode .filter-btn {
+            background: #16213e;
+            color: #e0e0e0;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+        }
+
+        body.dark-mode .blog-post {
+            background: #16213e;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.2);
+        }
+
+        .blog-image {
+            background: linear-gradient(135deg, #1a3a52, #0f5a7a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            min-height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .blog-image i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .blog-post h3 {
+            color: #1a3a52;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        body.dark-mode .blog-post h3 {
+            color: #4dd0e1;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        body.dark-mode .blog-meta {
+            color: #b0b0b0;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .blog-excerpt {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .blog-excerpt {
+            color: #d0d0d0;
+        }
+
+        .blog-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .blog-tag {
+            background: #f0f0f0;
+            color: #1a3a52;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        body.dark-mode .blog-tag {
+            background: #2a4a62;
+            color: #4dd0e1;
+        }
+
+        .read-more {
+            color: #00bcd4;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #0a8a9a;
+            gap: 0.8rem;
+        }
+
+        .blog-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-widget {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .sidebar-widget {
+            background: #16213e;
+        }
+
+        .sidebar-widget h4 {
+            color: #1a3a52;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        body.dark-mode .sidebar-widget h4 {
+            color: #4dd0e1;
+        }
+
+        .widget-list {
+            list-style: none;
+        }
+
+        .widget-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .widget-list li {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .widget-list li:last-child {
+            border-bottom: none;
+        }
+
+        .widget-list a {
+            color: #00bcd4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .widget-list a:hover {
+            color: #0a8a9a;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-form input {
+            flex: 1;
+            padding: 0.7rem;
+            border: 2px solid #00bcd4;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        body.dark-mode .search-form input {
+            background: #16213e;
+            color: #e0e0e0;
+        }
+
+        .search-form button {
+            padding: 0.7rem 1rem;
+            background: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-form button:hover {
+            background: #0a8a9a;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 3rem 0;
+        }
+
+        .pagination a,
+        .pagination span {
+            padding: 0.5rem 0.75rem;
+            border: 2px solid #00bcd4;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #00bcd4;
+            transition: all 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .pagination .active {
+            background: #00bcd4;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .blog-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-post {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-image {
+                min-height: 150px;
+            }
+
+            .blog-sidebar {
+                order: -1;
+            }
+
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">ICONHIMUSELFUUU</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <div class="blog-hero">
+        <h1>Industry Insights & Strategic Analysis</h1>
+        <p>Expert Perspectives on IT Innovation, Program Management, and Digital Excellence</p>
+    </div>
+
+    <!-- Blog Content -->
+    <div class="blog-container">
+        <div class="blog-layout">
+            <div>
+                <!-- Filter -->
+                <div class="blog-filter">
+                    <button class="filter-btn active" data-filter="all">All Articles</button>
+                    <button class="filter-btn" data-filter="technology">Technology</button>
+                    <button class="filter-btn" data-filter="management">Management</button>
+                    <button class="filter-btn" data-filter="insights">Insights</button>
+                </div>
+
+                <!-- Blog Posts -->
+                <div class="blog-posts">
+                    <!-- Blog Post 1 -->
+                    <article class="blog-post" data-category="technology">
+                        <div class="blog-image">
+                            <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Cybersecurity">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div>
+                                <h3>Enterprise Cybersecurity: Framework & Implementation Strategy</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar"></i>February 10, 2026</span>
+                                    <span><i class="fas fa-user"></i>ICONHIMUSELFUUU</span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Security</span>
+                                    <span class="blog-tag">Enterprise</span>
+                                    <span class="blog-tag">Strategy</span>
+                                </div>
+                                <p class="blog-excerpt">
+                                    Comprehensive analysis of modern cybersecurity frameworks, threat landscape evolution, and proven strategies for protecting organizational assets while maintaining business agility.
+                                </p>
+                            </div>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="blog-post" data-category="management">
+                        <div class="blog-image">
+                            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Management">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div>
+                                <h3>Strategic Process Optimization: Driving Organizational Excellence</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar"></i>February 5, 2026</span>
+                                    <span><i class="fas fa-user"></i>ICONHIMUSELFUUU</span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Management</span>
+                                    <span class="blog-tag">Strategy</span>
+                                    <span class="blog-tag">Operations</span>
+                                </div>
+                                <p class="blog-excerpt">
+                                    Deep dive into program analysis methodologies and process optimization techniques that deliver measurable efficiency gains, cost reduction, and sustainable competitive advantage.
+                                </p>
+                            </div>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 3 -->
+                    <article class="blog-post" data-category="insights">
+                        <div class="blog-image">
+                            <img src="https://images.pexels.com/photos/3577494/pexels-photo-3577494.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Innovation">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div>
+                                <h3>Digital Transformation: Strategic Roadmap for Enterprise Success</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar"></i>January 30, 2026</span>
+                                    <span><i class="fas fa-user"></i>ICONHIMUSELFUUU</span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Digital</span>
+                                    <span class="blog-tag">Strategy</span>
+                                    <span class="blog-tag">Innovation</span>
+                                </div>
+                                <p class="blog-excerpt">
+                                    Strategic examination of digital transformation imperatives, technology integration frameworks, and organizational readiness factors for achieving digital excellence.
+                                </p>
+                            </div>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 4 -->
+                    <article class="blog-post" data-category="technology">
+                        <div class="blog-image">
+                            <img src="https://images.pexels.com/photos/3348519/pexels-photo-3348519.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Cloud">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div>
+                                <h3>Cloud Infrastructure: Strategic Implementation & Best Practices</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar"></i>January 25, 2026</span>
+                                    <span><i class="fas fa-user"></i>ICONHIMUSELFUUU</span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Cloud</span>
+                                    <span class="blog-tag">Infrastructure</span>
+                                    <span class="blog-tag">Strategy</span>
+                                </div>
+                                <p class="blog-excerpt">
+                                    Comprehensive guide to cloud infrastructure strategy, migration pathways, cost optimization, and achieving competitive advantage through cloud-based transformation.
+                                </p>
+                            </div>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 5 -->
+                    <article class="blog-post" data-category="management">
+                        <div class="blog-image">
+                            <img src="https://images.pexels.com/photos/3762810/pexels-photo-3762810.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Team">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div>
+                                <h3>Organizational Leadership: Strategy for Excellence & Growth</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar"></i>January 20, 2026</span>
+                                    <span><i class="fas fa-user"></i>ICONHIMUSELFUUU</span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Leadership</span>
+                                    <span class="blog-tag">Management</span>
+                                    <span class="blog-tag">Strategy</span>
+                                </div>
+                                <p class="blog-excerpt">
+                                    Executive insights on building high-performance teams, organizational culture development, talent management strategies, and driving sustainable growth.
+                                </p>
+                            </div>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 6 -->
+                    <article class="blog-post" data-category="insights">
+                        <div class="blog-image">
+                            <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Startup">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div>
+                                <h3>Enterprise Growth: Technology & Strategy Alignment</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar"></i>January 15, 2026</span>
+                                    <span><i class="fas fa-user"></i>ICONHIMUSELFUUU</span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Enterprise</span>
+                                    <span class="blog-tag">Strategy</span>
+                                    <span class="blog-tag">Innovation</span>
+                                </div>
+                                <p class="blog-excerpt">
+                                    Strategic framework for enterprises to scale operations, align technology infrastructure with business objectives, and achieve sustainable competitive advantage.
+                                </p>                                </p>
+                            </div>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <span class="active">1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="blog-sidebar">
+                <!-- Search Widget -->
+                <div class="sidebar-widget">
+                    <h4>Search Articles</h4>
+                    <form class="search-form" onsubmit="event.preventDefault();">
+                        <input type="text" placeholder="Search...">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+
+                <!-- Popular Posts -->
+                <div class="sidebar-widget">
+                    <h4>Popular Articles</h4>
+                    <ul class="widget-list">
+                        <li><a href="#">Cybersecurity Best Practices 2026</a></li>
+                        <li><a href="#">Cloud Migration Strategy</a></li>
+                        <li><a href="#">Digital Transformation Guide</a></li>
+                        <li><a href="#">Team Building Excellence</a></li>
+                        <li><a href="#">IT Strategy for Startups</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div class="sidebar-widget">
+                    <h4>Categories</h4>
+                    <ul class="widget-list">
+                        <li><a href="#">Technology (12)</a></li>
+                        <li><a href="#">Management (8)</a></li>
+                        <li><a href="#">Insights (6)</a></li>
+                        <li><a href="#">Case Studies (4)</a></li>
+                        <li><a href="#">Industry News (3)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="sidebar-widget" style="background: linear-gradient(135deg, #1a3a52, #0f5a7a); color: white;">
+                    <h4 style="color: white; border-bottom: 2px solid rgba(255, 255, 255, 0.3); padding-bottom: 0.5rem;">Subscribe</h4>
+                    <p style="font-size: 0.95rem; margin: 1rem 0;">Get the latest articles and insights delivered to your inbox.</p>
+                    <form onsubmit="event.preventDefault();" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <input type="email" placeholder="Your email" style="padding: 0.7rem; border: none; border-radius: 5px; color: #333;">
+                        <button type="submit" style="padding: 0.7rem; background: #00bcd4; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.3s;">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ICONHIMUSELFUUU. All rights reserved.</p>
+            <p>Innovating IT & Management Solutions | Professional Growth & Digital Excellence</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Blog filtering
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Filter posts
+                document.querySelectorAll('.blog-post').forEach(post => {
+                    if (filter === 'all' || post.getAttribute('data-category') === filter) {
+                        post.style.display = 'grid';
+                        post.style.animation = 'fadeIn 0.4s ease-out';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

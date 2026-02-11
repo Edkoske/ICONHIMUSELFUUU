@@ -1,0 +1,94 @@
+IMAGE SETUP - PEXELS INTEGRATION
+==================================
+
+Your website now uses professional images directly from Pexels.com!
+
+✅ IMAGES INCLUDED:
+===================
+
+PROFILE & ABOUT SECTIONS:
+- Profile Photo: Professional portrait
+- About Section: Business professional image
+
+PORTFOLIO PROJECTS (6 images):
+- Cybersecurity Implementation
+- Process Optimization
+- Technical Blog
+- Data Analytics & Reporting
+- Cloud Migration
+- Training Program
+
+BLOG POSTS (6 images):
+- Cybersecurity Best Practices
+- Management Optimization
+- Digital Transformation
+- Cloud Migration
+- Team Building
+- Startup Strategy
+
+CHANGING IMAGES:
+================
+
+To customize images, update the image URLs in:
+
+1. index.html
+   - Line ~58: Hero profile image
+   - Line ~108: About section image
+   - Lines ~123-180: Portfolio project images (6 images)
+
+2. blog.html
+   - Lines ~398-570: Blog post images (6 images)
+
+HOW TO FIND NEW PEXELS IMAGES:
+===============================
+
+1. Visit: https://www.pexels.com
+2. Search for keywords (e.g., "business", "technology", "teamwork")
+3. Right-click the image and copy direct link
+4. Replace the URL in HTML with your new image URL
+
+IMAGE URL FORMAT (from Pexels):
+https://images.pexels.com/photos/{ID}/pexels-photo-{ID}.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop
+
+RECOMMENDED SIZES:
+==================
+- Profile/About: 400x400px (square)
+- Portfolio Cards: 400x300px (landscape)
+- Blog Images: 400x300px (landscape)
+
+PROFESSIONAL IMAGE SUGGESTIONS:
+================================
+
+For IT/Business Portfolio:
+- Search: "office", "technology", "laptop", "team meeting"
+- Style: Modern, clean, professional color tones
+
+For Blog Posts:
+- Search: "cybersecurity", "business analytics", "software development"
+- Style: Consistent with your brand colors
+
+BENEFITS OF PEXELS:
+===================
+✓ No copyright issues - all images are free to use
+✓ High quality professional images
+✓ No attribution required
+✓ Fast CDN delivery
+✓ Easy to find and swap images
+✓ Works globally
+
+FALLBACK ICONS:
+================
+If an image fails to load, beautiful icon placeholders appear:
+- Font Awesome icons automatically display
+- Maintains professional appearance
+- Gradient backgrounds stay visible
+
+PERFORMANCE NOTE:
+=================
+Pexels images are already optimized and include:
+- Automatic compression
+- WebP format support
+- Responsive sizing parameters
+- CDN delivery for fast loading
+
+Your website is fully functional with Pexels images and looks professional!
