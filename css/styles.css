@@ -1110,6 +1110,11 @@ body.dark-mode .testimonial-author p {
     gap: var(--spacing-xl);
 }
 
+/* New section for contact info above form */
+.contact-info-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -1184,6 +1189,8 @@ body.dark-mode .testimonial-author p {
     border-radius: var(--radius-lg);
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 100%;
 }
 
 body.dark-mode .contact-form {
@@ -1735,8 +1742,12 @@ body.dark-mode .footer {
         gap: 1.5rem;
     }
     
+    .contact-info-section {
+        margin-bottom: var(--spacing-xl);
+    }
+    
     .contact-form {
-        margin-top: 2rem;
+        margin-top: 0;
         padding: var(--spacing-lg);
         gap: var(--spacing-md);
     }
@@ -2257,8 +2268,12 @@ body.dark-mode .footer {
         font-size: 0.9rem;
     }
     
+    .contact-info-section {
+        margin-bottom: var(--spacing-lg);
+    }
+    
     .contact-form {
-        margin-top: 1.5rem;
+        margin-top: 0;
         padding: var(--spacing-lg);
         gap: var(--spacing-md);
     }
