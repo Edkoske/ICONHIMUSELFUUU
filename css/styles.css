@@ -1178,106 +1178,183 @@ body.dark-mode .testimonial-author p {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
+    background: var(--neutral-lightest);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .contact-form {
+    background: var(--dark-card);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
 .form-group {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.35rem;
+    font-family: var(--font-secondary);
+    letter-spacing: 0.3px;
+}
+
+body.dark-mode .form-label {
+    color: var(--accent-color);
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 0.95rem 1.1rem;
+    padding: 0.95rem 1.15rem;
     background: rgba(255, 255, 255, 0.98);
-    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.08);
     border-radius: var(--radius-md);
     font-family: var(--font-primary);
-    transition: all var(--transition-fast);
+    transition: all var(--transition-smooth);
     color: var(--text-dark);
     font-size: 1rem;
     font-weight: 400;
+    line-height: 1.6;
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+    background: rgba(26, 26, 46, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--dark-text);
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.35);
     font-weight: 400;
+}
+
+body.dark-mode .contact-form input::placeholder,
+body.dark-mode .contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.35);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: inset 0 0 0 1px var(--accent-color), 0 0 0 3px rgba(0, 188, 212, 0.1);
+    box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.15), inset 0 0 0 1px var(--accent-color);
     background: white;
+}
+
+body.dark-mode .contact-form input:focus,
+body.dark-mode .contact-form textarea:focus {
+    background: rgba(26, 26, 46, 0.8);
 }
 
 .contact-form textarea {
     resize: vertical;
-    min-height: 140px;
+    min-height: 160px;
     font-family: var(--font-primary);
+}
+
+/* Form Section Label */
+.form-section-label {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid rgba(0, 188, 212, 0.1);
+}
+
+.form-section-label h4 {
+    font-family: var(--font-secondary);
+    font-weight: 800;
+    font-size: 1.35rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+}
+
+body.dark-mode .form-section-label h4 {
+    color: var(--dark-text);
+}
+
+.form-section-label p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: var(--line-height-normal);
+}
+
+body.dark-mode .form-section-label p {
+    color: var(--dark-text-muted);
 }
 
 .contact-form .btn-primary {
     font-size: 1.05rem;
     font-weight: 700;
-    padding: 1rem 2.5rem;
+    padding: 1.1rem 2.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-smooth);
+    align-self: flex-start;
+    border-radius: var(--radius-md);
 }
 
 .contact-form .btn-primary:hover {
-    box-shadow: 0 12px 30px rgba(0, 188, 212, 0.4);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.contact-form .btn-primary:active {
+    transform: translateY(0);
 }
 
 .form-response {
     padding: var(--spacing-md);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     display: none;
     margin-top: var(--spacing-md);
     font-weight: 600;
     text-align: center;
+    border-left: 4px solid transparent;
+    animation: slideInDown 0.4s ease-out;
 }
 
 .form-response.success {
-    background: rgba(39, 174, 96, 0.2);
+    background: rgba(39, 174, 96, 0.15);
     color: #27ae60;
     display: block;
-    border-left: 4px solid #27ae60;
+    border-left-color: #27ae60;
 }
 
 .form-response.error {
-    background: rgba(231, 76, 60, 0.2);
+    background: rgba(231, 76, 60, 0.15);
     color: #e74c3c;
     display: block;
-    border-left: 4px solid #e74c3c;
+    border-left-color: #e74c3c;
 }
 
-/* Form Label Styling */
-.form-label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    opacity: 0.9;
+/* Form Privacy Notice */
+.form-privacy-notice {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: var(--line-height-relaxed);
+    margin: var(--spacing-md) 0 0 0;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Form Section Label */
-.form-section-label {
-    margin-bottom: var(--spacing-md);
+body.dark-mode .form-privacy-notice {
+    color: var(--dark-text-muted);
+    border-top-color: rgba(255, 255, 255, 0.1);
 }
-
-.form-section-label h4 {
-    font-family: var(--font-secondary);
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin: 0;
-}
-
-.form-section-label p {
-    font-size: 0.9rem;
     opacity: 0.85;
     margin-top: 0.5rem;
 }
@@ -1660,6 +1737,32 @@ body.dark-mode .footer {
     
     .contact-form {
         margin-top: 2rem;
+        padding: var(--spacing-lg);
+        gap: var(--spacing-md);
+    }
+    
+    .form-section-label h4 {
+        font-size: 1.2rem;
+    }
+    
+    .form-label {
+        font-size: 0.9rem;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.85rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .contact-form textarea {
+        min-height: 140px;
+    }
+    
+    .contact-form .btn-primary {
+        padding: 0.95rem 2rem;
+        font-size: 1rem;
+        letter-spacing: 0.6px;
     }
     
     .hamburger {
@@ -2156,24 +2259,50 @@ body.dark-mode .footer {
     
     .contact-form {
         margin-top: 1.5rem;
+        padding: var(--spacing-lg);
+        gap: var(--spacing-md);
     }
     
-    .contact-form h4 {
-        font-size: 1.1rem;
+    .form-section-label {
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-md);
     }
-    
-    .contact-form label {
-        font-size: 0.85rem;
+
+    .form-section-label h4 {
+        font-size: 1rem;
         margin-bottom: 0.4rem;
+    }
+    
+    .form-section-label p {
+        font-size: 0.85rem;
+    }
+
+    .form-label {
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
     }
     
     .contact-form input,
     .contact-form textarea {
         font-size: 16px;
-        padding: 0.7rem 0.65rem;
+        padding: 0.75rem 0.85rem;
         width: 100%;
     }
     
+    .contact-form textarea {
+        min-height: 130px;
+    }
+
+    .contact-form .btn-primary {
+        padding: 0.85rem 1.75rem;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .form-privacy-notice {
+        font-size: 0.8rem;
+    }
+
     .contact-form button {
         padding: 0.8rem 1.25rem;
         font-size: 0.9rem;
@@ -2368,6 +2497,17 @@ body.dark-mode .footer {
     to {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
