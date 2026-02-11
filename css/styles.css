@@ -1012,6 +1012,92 @@ body.dark-mode .testimonial-author p {
     border-left: 4px solid #e74c3c;
 }
 
+/* Form Label Styling */
+.form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+/* Form Section Label */
+.form-section-label {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-section-label h4 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.form-section-label p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 0.5rem;
+}
+
+/* Form Privacy Notice */
+.form-privacy-notice {
+    font-size: 0.8rem;
+    margin-top: var(--spacing-md);
+    opacity: 0.75;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Contact Item Styling */
+.contact-item-heading {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.contact-item-bold {
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.contact-item-description {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+.contact-link {
+    font-weight: 600;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+/* Contact Divider */
+.contact-divider {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: var(--spacing-md) 0;
+}
+
+/* Social Links Heading */
+.social-heading {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+}
+
+/* Social Links Container */
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    font-size: 1.8rem;
+    opacity: 0.9;
+}
+
 /* ==============================================
    FOOTER
    ============================================== */
