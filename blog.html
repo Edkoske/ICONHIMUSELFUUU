@@ -323,6 +323,98 @@
             color: white;
         }
 
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .newsletter-input {
+            padding: 0.75rem;
+            border: 2px solid #00bcd4;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        body.dark-mode .newsletter-input {
+            background: #16213e;
+            color: #e0e0e0;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #0a8a9a;
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.15);
+        }
+
+        .newsletter-button {
+            padding: 0.75rem;
+            background: linear-gradient(135deg, #00bcd4, #0a8a9a);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .newsletter-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.3);
+        }
+
+        .newsletter-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .newsletter-status {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .newsletter-status.show {
+            display: block;
+        }
+
+        .newsletter-status.success {
+            background: rgba(76, 175, 80, 0.15);
+            color: #4caf50;
+            border: 1px solid #4caf50;
+        }
+
+        body.dark-mode .newsletter-status.success {
+            background: rgba(76, 175, 80, 0.2);
+        }
+
+        .newsletter-status.error {
+            background: rgba(244, 67, 54, 0.15);
+            color: #f44336;
+            border: 1px solid #f44336;
+        }
+
+        body.dark-mode .newsletter-status.error {
+            background: rgba(244, 67, 54, 0.2);
+        }
+
+        .newsletter-status.loading {
+            background: rgba(0, 188, 212, 0.15);
+            color: #00bcd4;
+            border: 1px solid #00bcd4;
+        }
+
+        body.dark-mode .newsletter-status.loading {
+            background: rgba(0, 188, 212, 0.2);
+        }
+
         @media (max-width: 768px) {
             .blog-layout {
                 grid-template-columns: 1fr;
@@ -602,9 +694,10 @@
                 <div class="sidebar-widget newsletter-widget">
                     <h4 class="newsletter-title">Subscribe</h4>
                     <p class="newsletter-description">Get the latest articles and insights delivered to your inbox.</p>
-                    <form onsubmit="event.preventDefault();" class="newsletter-form">
-                        <input type="email" placeholder="Your email" class="newsletter-input">
+                    <form id="newsletterForm" class="newsletter-form">
+                        <input type="email" placeholder="Your email" class="newsletter-input" name="email" required>
                         <button type="submit" class="newsletter-button">Subscribe</button>
+                        <div id="newsletterStatus" class="newsletter-status"></div>
                     </form>
                 </div>
             </aside>
@@ -641,6 +734,50 @@
                 });
             });
         });
+
+        // Newsletter subscription handler
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const emailInput = newsletterForm.querySelector('input[name="email"]');
+                const statusDiv = document.getElementById('newsletterStatus');
+                const subscriberEmail = emailInput.value.trim();
+
+                // Reset status
+                statusDiv.classList.remove('success', 'error', 'show');
+                statusDiv.textContent = '';
+
+                // Validate email
+                if (!subscriberEmail || !isValidEmail(subscriberEmail)) {
+                    statusDiv.textContent = 'Please enter a valid email address.';
+                    statusDiv.classList.add('error', 'show');
+                    return;
+                }
+
+                // Send via mailto
+                const subject = encodeURIComponent('New Blog Newsletter Subscription');
+                const body = encodeURIComponent(`New subscriber to the blog newsletter:\n\nEmail: ${subscriberEmail}\n\nPlease add this email to your newsletter mailing list.`);
+                window.location.href = `mailto:kimutaikelvin800@gmail.com?subject=${subject}&body=${body}`;
+
+                // Show success message
+                statusDiv.textContent = 'Thank you for subscribing! Opening email client...';
+                statusDiv.classList.add('success', 'show');
+                emailInput.value = '';
+
+                // Clear message after 3 seconds
+                setTimeout(() => {
+                    statusDiv.classList.remove('show');
+                    statusDiv.textContent = '';
+                }, 3000);
+            });
+        }
+
+        // Email validation helper
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
     </script>
 </body>
 </html>
