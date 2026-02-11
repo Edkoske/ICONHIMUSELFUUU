@@ -260,32 +260,7 @@ document.querySelectorAll('.portfolio-card, .service-card, .testimonial-card').f
     observer.observe(el);
 });
 
-// ==========================================
-// TYPING ANIMATION FOR HERO
-// ==========================================
 
-function createTypeWriterEffect() {
-    const heroTitle = document.querySelector('.hero-title');
-    const originalText = heroTitle.textContent;
-    heroTitle.textContent = '';
-
-    let index = 0;
-    const speed = 50; // milliseconds per character
-
-    function typeWriter() {
-        if (index < originalText.length) {
-            heroTitle.textContent += originalText.charAt(index);
-            index++;
-            setTimeout(typeWriter, speed);
-        }
-    }
-
-    // Start typing animation when page loads
-    window.addEventListener('load', typeWriter);
-}
-
-// Call after a short delay to ensure DOM is ready
-setTimeout(createTypeWriterEffect, 100);
 
 // ==========================================
 // LAZY LOADING FOR IMAGES (IF ADDED)
