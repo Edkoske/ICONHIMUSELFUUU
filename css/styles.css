@@ -1240,6 +1240,152 @@ body.dark-mode .footer {
    RESPONSIVE DESIGN - TABLET & DESKTOP OPTIMIZATION
    ============================================== */
 
+/* Ultra-Wide Desktop & 4K Displays (1921px+) */
+@media (min-width: 1921px) {
+    .container {
+        max-width: 1400px;
+        padding: 0 2rem;
+    }
+    
+    section {
+        padding: 4.5rem 2rem;
+    }
+    
+    .hero-content,
+    .about-content,
+    .contact-content {
+        gap: 3.5rem;
+    }
+    
+    .hero-title {
+        font-size: 4.5rem;
+        letter-spacing: -2px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.85rem;
+    }
+    
+    .hero-intro {
+        font-size: 1.25rem;
+        max-width: 700px;
+    }
+    
+    .section-title {
+        font-size: 3.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.4rem;
+        max-width: 800px;
+    }
+    
+    .profile-placeholder,
+    .hero-visual {
+        min-width: 350px;
+    }
+    
+    .portfolio-grid,
+    .services-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+    
+    .portfolio-card,
+    .service-card,
+    .testimonial-card,
+    .skill-card {
+        padding: 2rem;
+    }
+    
+    .about-text h3 {
+        font-size: 2rem;
+    }
+    
+    .about-text h4 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-info {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .contact-form {
+        max-width: none;
+    }
+    
+    .btn {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* Large Desktop (1401px - 1920px) */
+@media (min-width: 1401px) and (max-width: 1920px) {
+    .container {
+        max-width: 1300px;
+        padding: 0 1.75rem;
+    }
+    
+    section {
+        padding: 4rem 1.75rem;
+    }
+    
+    .hero-content,
+    .about-content,
+    .contact-content {
+        gap: 3rem;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.7rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+    
+    .portfolio-grid,
+    .services-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.75rem;
+    }
+    
+    .portfolio-card,
+    .service-card,
+    .testimonial-card,
+    .skill-card {
+        padding: 1.75rem;
+    }
+    
+    .contact-info {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    .btn {
+        padding: 1.1rem 2.3rem;
+        font-size: 1.05rem;
+    }
+}
+
 /* Tablet Landscape (961px - 1200px) */
 @media (min-width: 961px) and (max-width: 1200px) {
     .container {
@@ -1912,7 +2058,145 @@ body.dark-mode .footer {
     }
 }
 
+/* ==============================================
+   DEVICE-SPECIFIC OPTIMIZATIONS
+   ============================================== */
 
+/* Touch Device & Mobile Optimization (iOS, Android) */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .btn:hover,
+    .nav-link:hover,
+    .portfolio-card:hover,
+    .service-card:hover,
+    .testimonial-card:hover,
+    .skill-card:hover {
+        transform: none;
+        box-shadow: var(--shadow-md);
+    }
+    
+    /* Better touch targets (minimum 44px) */
+    .btn,
+    .nav-link,
+    .theme-toggle,
+    .hamburger {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Disable zoom on input focus */
+    input,
+    textarea,
+    select {
+        font-size: 16px;
+    }
+    
+    /* Smooth scrolling on touch devices */
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* High-DPI Display Optimization (Retina, 2x+ screens) */
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+    .section-title::after {
+        height: 2px;
+    }
+    
+    .nav-link::after {
+        height: 1.5px;
+    }
+    
+    /* Sharper text rendering */
+    body {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}
+
+/* Landscape Mobile (800x600 and similar) */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 2rem var(--spacing-sm);
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    section {
+        padding: 2rem var(--spacing-sm);
+    }
+    
+    .navbar {
+        position: static;
+    }
+    
+    .portfolio-grid,
+    .services-grid,
+    .testimonials-grid,
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Reduced Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark Mode Preference */
+@media (prefers-color-scheme: dark) {
+    body:not(.dark-mode) {
+        background: var(--dark-bg);
+        color: var(--dark-text);
+    }
+}
+
+/* Print Optimization */
+@media print {
+    .navbar,
+    .hamburger,
+    .theme-toggle,
+    .scroll-indicator,
+    .btn,
+    .contact-form {
+        display: none;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+    
+    a {
+        text-decoration: underline;
+    }
+    
+    .section-title,
+    .portfolio-card,
+    .testimonial-card {
+        page-break-inside: avoid;
+    }
+}
 
 /* ==============================================
    ANIMATIONS
