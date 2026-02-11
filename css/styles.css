@@ -959,6 +959,26 @@ body.dark-mode .testimonial-author p {
     color: white;
 }
 
+/* Contact Section Typography */
+.contact-title {
+    color: white;
+    font-weight: 800;
+}
+
+.contact-subtitle {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+}
+
+/* Submit Button Styling */
+.btn-submit {
+    width: 100%;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 1rem 2.2rem;
+}
+
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
